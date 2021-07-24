@@ -11,39 +11,46 @@ type MyProps = {
 
 function SingleMentor(props:MyProps) {
 
-    //Deprecated (but not really): The div automatically flips over if you scroll to it.
-    //This makes it easier to read. While this makes the most sense on a mobile device, it still isn't 
-    //that helpful because users don't want to read every bio.
+    /*DEPRECATED (but not really): The div automatically flips over if you scroll to it.
+    This makes it easier to read. While this makes the most sense on a mobile device, it still isn't 
+    that helpful because users don't want to read every bio.
 
+    I am keeping this here for reference in future projects.
+
+    Source: https://dev.to/producthackers/intersection-observer-using-react-49ko
+
+    */
+
+    //DEPRECATED
     // const [shouldFlip, setFlip] = useState(false);
 
-    //Source: https://dev.to/producthackers/intersection-observer-using-react-49ko
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const callbackFunction = (entries: any) => {
-        const [entry] = entries;
-        // setFlip(entry.isIntersecting)
-    }
+    //DEPRECATED
+    // const callbackFunction = (entries: any) => {
+    //     const [entry] = entries;
+    //     setFlip(entry.isIntersecting)
+    // }
 
-    const options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 1
-    }
+    // const options = {
+    //     root: null,
+    //     rootMargin: "0px",
+    //     threshold: 1
+    // }
 
-    useEffect(() => {
-        //Using the IntersectionObserver API: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-        const observer = new IntersectionObserver(callbackFunction, options);
+    // useEffect(() => {
+    //     //Using the IntersectionObserver API: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+    //     const observer = new IntersectionObserver(callbackFunction, options);
 
-        if(containerRef.current) {
-            observer.observe(containerRef.current);
-        }
+    //     if(containerRef.current) {
+    //         observer.observe(containerRef.current);
+    //     }
 
-        return () => {
-            if(containerRef.current) observer.unobserve(containerRef.current);
-        }
+    //     return () => {
+    //         if(containerRef.current) observer.unobserve(containerRef.current);
+    //     }
 
-    }, [containerRef])
+    // }, [containerRef])
 
     let fullName = props.firstName + " " + props.lastName;
 
@@ -64,7 +71,8 @@ function SingleMentor(props:MyProps) {
     }
 
     let flipStyle = {};
-    
+
+    //DEPRECATED
     // if(shouldFlip) {
     //     flipStyle = {
     //         transform: 'rotateY(180deg)', /* part of flipping animation */

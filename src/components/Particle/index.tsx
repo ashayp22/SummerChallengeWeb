@@ -172,7 +172,7 @@ export const Particle = () => <Particles
             }
           },
           "color": {
-            "value": "#f5c542",
+            "value": "#eb7d34",
             "animation": {
               "h": {
                 "count": 0,

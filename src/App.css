@@ -1,11 +1,13 @@
 .App {
   text-align: center;
   background: #2b2f71;
-  color: white;
+  /* background: -webkit-linear-gradient(to left, #219b96, #2b2f71);   */
+  /* background: linear-gradient(0deg, #219b96, #2b2f71); */
+    color: white;
   position: relative;
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  background: #2b2f71;
+  
   overflow: hidden;
 }

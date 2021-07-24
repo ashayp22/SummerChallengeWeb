@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {getData} from '../../Requests'
 import SingleMentor from '../SingleMentor'
 
 import LOGO from '../../assets/logo.svg' 
 import styles from './styles.module.scss';
 import ReactLoading from 'react-loading'; 
+
 
 interface MentorData extends JSON {
   description: string;
@@ -20,7 +21,7 @@ function MentorPage () {
 
   useEffect(() => {
     
-    //When component is mounted, get data from the API
+    /*When component is mounted, get data from the API*/
     getData("upload/blobstore/mentors/", "GET", {}, (d: any) => {
 
       /*This next piece organizes the mentors such that those with the default image are at the end.
@@ -38,11 +39,14 @@ function MentorPage () {
         }
       }
 
-
+      /*Update state*/
       setMentorData(allMentors);    
     })
 
-  }, [])
+  }, []) //Doesn't rerun after state change
+
+ 
+
 
   return(
 
@@ -54,7 +58,7 @@ function MentorPage () {
         <hr></hr>
         <br/>
 
-        {/* Show loading sign if data hasn't been returned from API */}
+        {/* Shows loading sign if data hasn't been returned from API */}
         {mentorData.length === 0
         ?
         <ReactLoading className = {styles.loading} type={"spin"} color={"white"} height='200px' width='200px'/>

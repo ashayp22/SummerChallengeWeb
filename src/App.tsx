@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 import MentorPage from './components/MentorPage'
+import {Particle} from './components/Particle'
 
 function App() {
   return (
     <div className="App">
+      <Particle/>
       <MentorPage/>
     </div>
   );
@@ -14,10 +16,6 @@ function App() {
 
 TODO:
 
-- add getting bio
-- change design
-- make responsive
-- upload to github
 - do iOS if have time
 
 */

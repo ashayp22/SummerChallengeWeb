@@ -1,4 +1,5 @@
-import React from 'react';
+import {useEffect, useState, useRef} from 'react';
+
 import styles from './styles.module.scss';
 
 type MyProps = {
@@ -10,28 +11,85 @@ type MyProps = {
 
 function SingleMentor(props:MyProps) {
 
+    //Deprecated (but not really): The div automatically flips over if you scroll to it.
+    //This makes it easier to read. While this makes the most sense on a mobile device, it still isn't 
+    //that helpful because users don't want to read every bio.
+
+    // const [shouldFlip, setFlip] = useState(false);
+
+    //Source: https://dev.to/producthackers/intersection-observer-using-react-49ko
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    const callbackFunction = (entries: any) => {
+        const [entry] = entries;
+        // setFlip(entry.isIntersecting)
+    }
+
+    const options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 1
+    }
+
+    useEffect(() => {
+        //Using the IntersectionObserver API: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+        const observer = new IntersectionObserver(callbackFunction, options);
+
+        if(containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => {
+            if(containerRef.current) observer.unobserve(containerRef.current);
+        }
+
+    }, [containerRef])
+
     let fullName = props.firstName + " " + props.lastName;
+
+    //Sets the background of a div to the profile picture
+    let fullStyle = {
+        backgroundImage: "url('" + props.profile + "')",
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: "cover",
+    }
+
+    /*Sets the font size of the description text to fill most of its container.
+    The formula for calculating this is dependent on text length, and found using exponential regression.
+    */
+    let descriptionLength = props.description.length;
+
+    let mentorStyle = {
+        fontSize: Math.round(22.8669 * Math.pow(0.9988, descriptionLength)) + "px",
+    }
+
+    let flipStyle = {};
+    
+    // if(shouldFlip) {
+    //     flipStyle = {
+    //         transform: 'rotateY(180deg)', /* part of flipping animation */
+    //     }
+    // }
+
+
 
   return(
 
-        <div className = {styles.singleMentor}>
-            <div className = {styles.singleMentorInner}>
-                <div className = {styles.singleMentorFront}>
-                <img
-                    className = {styles.mentorImage}
-                    src={props.profile}
-                    alt={fullName}
-                />
-                <p className = {styles.mentorName}>{fullName}</p>
+        <div ref = {containerRef} className = {styles.singleMentor}>
+            <div style = {flipStyle} className = {styles.singleMentorInner}>
+                <div style = {fullStyle} className = {styles.singleMentorFront}>
+                <div className = {styles.mentorName}>
+                    {fullName}
+                </div>
                 </div>
                 <div className = {styles.singleMentorBack}>
-                    <p className = {styles.mentorDescription}> 
+                    <p style = {mentorStyle} className = {styles.mentorDescription}> 
                         {props.description}
                     </p>
                 </div>
             </div>
             </div>
-  )
+    )
 }
 
 export default SingleMentor;

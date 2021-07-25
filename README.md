@@ -1,4 +1,4 @@
-## HackIllinois Summer Challenge
+## HackIllinois Web Summer Challenge
 
 Public Link: https://ashayp22.github.io/SummerChallengeWeb/
 

@@ -4,7 +4,6 @@ Public Link: https://ashayp22.github.io/SummerChallengeWeb/
 
 ### Features
 
-- GET mentor data from HackIllinois API
 - Display mentors in flippable cards
 - Order mentors based on profile image
 - Responsive design

@@ -4,7 +4,7 @@ Public Link: https://ashayp22.github.io/SummerChallengeWeb/
 
 ### Features
 
-- Displays mentors in flippable cards
+- Displays mentors on cards that flip on hover
 - **Sorts** mentors based on profile image
 - Responsive design
 - Interactive star background with [particles.js](https://vincentgarreau.com/particles.js/)

@@ -9,5 +9,4 @@ Public Link: https://ashayp22.github.io/SummerChallengeWeb/
 - Responsive design
 - Interactive star background with [particles.js](https://vincentgarreau.com/particles.js/)
 - [Loading spinner](https://www.npmjs.com/package/react-loading)
-
-(Had cards automatically flip based on scroll for mobile devices, but I removed it)
+- ~~cards automatically flip based on scroll (for mobile devices only)~~
